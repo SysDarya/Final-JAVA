@@ -59,7 +59,7 @@ public class Main {
         notebooks.add(new Notebook("Lenovo", 12, 1024, "Windows 11", "Black"));
         notebooks.add(new Notebook("Apple", 8, 512, "MacOS", "Silver"));
 
-        // Запрашиваем у пользователя критерии фильтрации
+        
         Map<String, Object> filters = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -70,7 +70,7 @@ public class Main {
         System.out.println("4 - Цвет");
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Считываем символ новой строки после ввода числа
+        scanner.nextLine(); 
 
         switch (choice) {
             case 1:
@@ -100,15 +100,13 @@ public class Main {
 
         List<Notebook> filteredNotebooks = filterNotebooks(notebooks, filters);
 
-        // Выводим результаты фильтрации
         System.out.println("Результаты фильтрации:");
         for (Notebook notebook : filteredNotebooks) {
             notebook.displayInfo();
         }
     }
 
-    // Метод для фильтрации ноутбуков
-    private static List<Notebook> filterNotebooks(List<Notebook> notebooks, Map<String, Object> filters) {
+        private static List<Notebook> filterNotebooks(List<Notebook> notebooks, Map<String, Object> filters) {
         List<Notebook> filteredNotebooks = new ArrayList<>();
 
         for (Notebook notebook : notebooks) {
@@ -117,7 +115,6 @@ public class Main {
             for (Map.Entry<String, Object> entry : filters.entrySet()) {
                 String key = entry.getKey();
 
-                // Проверка условий фильтрации для каждого критерия
                 switch (key) {
                     case "ram":
                         meetsCriteria = meetsCriteria && (notebook.getRam() >= (int) entry.getValue());
